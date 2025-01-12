@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "85:80"
+    volumes:
+      - ./code:/var/www/html
+      - ./nginx/hosts:/etc/nginx/conf.d
+    depends_on:
+      - php-fpm
+      - memcache
+
+  php-fpm:
+    build:
+      context: ./fpm
+    volumes:
+      - ./code:/var/www/html
+    depends_on:
+      - memcache
+
+  memcache:
+    image: memcached:alpine
+    ports:
+      - "11211:11211"
+
+# version: '3.8'
+
+# services:
+#   php:
+#     build:
+#       context: ./fpm
+#     volumes:
+#       - ./code:/var/www/html
+#     networks:
+#       - mynetwork
+
+#   nginx:
+#     build:
+#       context: ./nginx
+#     ports:
+#       - "85:80"
+#     volumes:
+#       - ./code:/var/www/html
+#       - ./nginx/hosts:/etc/nginx/conf.d
+#     networks:
+#       - mynetwork
+
+#   memcache:
+#     image: memcached:latest
+#     networks:
+#       - mynetwork
+
+# networks:
+#   mynetwork:
+#     driver: bridge
