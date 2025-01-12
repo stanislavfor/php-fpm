@@ -18,6 +18,11 @@ git push -u origin main
 
 ```
 
+<hr>
+<hr>
+
+## Инструкция для создания WEB приложения на PHP
+
 ### Необходимые файлы конфигурации и настройки Docker Compose для запуска Nginx, PHP-FPM и Memcache
 
 Даны необходимые шаги для настройки рабочего окружения для PHP-проекта с использованием Docker Desktop, Nginx и PHP-FPM.
@@ -38,7 +43,7 @@ php-fpm/
 │       └── mysite.local.conf
 └── docker-compose.yaml
 ```
-<br><br>
+<br>
 
 - docker-compose.yaml - этот файл определяет сервисы для Nginx, PHP-FPM и Memcache.
 - fpm/Dockerfile - этот Dockerfile устанавливает PHP-FPM с необходимыми расширениями и настраивает php.ini.
